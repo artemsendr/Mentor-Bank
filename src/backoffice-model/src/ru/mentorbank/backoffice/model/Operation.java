@@ -15,7 +15,7 @@ public class Operation implements Serializable {
 	private StopListInfo dstStoplistInfo;
 	
 	private Calendar createDate;
-	private Calendar sentDate;
+	private Calendar sentDate; //sentDate=createDate-?
 
 	public Account getSrcAccount() {
 		return srcAccount;
@@ -37,7 +37,7 @@ public class Operation implements Serializable {
 		return sentDate;
 	}
 
-	public void setSentDate(Calendar sentDate) {
+	public void setSentDate(Calendar sentDate) { 
 		this.sentDate = sentDate;
 	}
 

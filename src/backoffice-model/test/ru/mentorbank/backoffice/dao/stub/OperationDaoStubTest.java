@@ -8,7 +8,7 @@ import java.util.Set;
 import org.junit.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 
-import ru.mentorbank.backoffice.dao.OperationDao;
+import ru.mentorbank.backoffice.dao.stub.OperationDaoStub;
 import ru.mentorbank.backoffice.dao.exception.OperationDaoException;
 import ru.mentorbank.backoffice.model.Operation;
 import ru.mentorbank.backoffice.model.stoplist.StopListStatus;
@@ -17,14 +17,15 @@ import ru.mentorbank.backoffice.test.AbstractSpringTest;
 public class OperationDaoStubTest extends AbstractSpringTest {
 
 	@Autowired
-	public OperationDao operationDao;
+	public OperationDaoStub operationDaoStub;//мне кажетс€ наадо так, а то зачем тогда Stub?))
+						//ƒа и почему должен быть сразу статус ASKSequrity у любой операции
 
 	@Test
 	public void getOperations() throws OperationDaoException {
-		Set<Operation> operaions = operationDao.getOperations();
+		Set<Operation> operaions = operationDaoStub.getOperations();
 		assertOperationsAreInAskSequrityStatus(operaions);
 	}
-
+	
 	private void assertOperationsAreInAskSequrityStatus(Set<Operation> operaions) {
 		assertNotNull(operaions);
 		for (Operation operation : operaions) {
